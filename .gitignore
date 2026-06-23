@@ -1,0 +1,28 @@
+# Secrets — never commit real credentials
+secure_config/db_credentials.php
+secure_config/menu_pin.hash
+config/db_credentials.php
+chiya_db_config.php
+
+# Local DB dumps / backups
+*.sql
+*.sql.gz
+*.bak
+
+# PHP session files
+sessions/*
+!sessions/.htaccess
+
+# Logs
+*.log
+
+# Runtime state files the app writes to itself
+config/.app_settings_ready
+config/.manage_waiter_promo_started_at
+config/.stock_schema_version
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

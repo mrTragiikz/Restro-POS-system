@@ -1,0 +1,223 @@
+/* assets/css/mobile_floorplan.css */
+/* Final Mobile Layout - Fix Parking Position outside Grid */
+
+@media screen and (max-width: 768px) {
+    .floor-plan-wrapper {
+        background: #E4D4C5 !important;
+        border-radius: 6px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.150);
+
+        width: 100% !important;
+        height: auto !important;
+        /* Let it expand to content height */
+        max-height: none !important;
+        min-height: 0 !important;
+
+        /* Flex Column to stack Grid + Parking vertically */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+
+        /* Padding adjustment for better scroll space */
+        padding: 10px 0 10px 5px !important;
+        margin: 5px auto !important;
+        height: min-content !important;
+
+        /* Main scroller (admin-shell) will handle the scroll */
+        overflow: visible !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        touch-action: manipulation !important;
+
+        position: relative !important;
+        /* Zoom reset handling */
+        zoom: 1 !important;
+    }
+
+    /* Grid - Main Layout */
+    .floor-layout {
+        display: grid !important;
+        /* Columns: C1 C2 C3 Gap C5 */
+        grid-template-columns: 100px 125px 125px 25px 165px !important;
+
+        /* Scale reduced slightly more for smaller phones (iPhone 13 Pro width) */
+        transform: scale(0.62) !important;
+        transform-origin: top left !important;
+
+        /* COMPENSATE FOR SCALE GHOST HEIGHT & WIDTH */
+        width: 788px !important;
+        margin-right: -100px !important;
+        margin-bottom: -730px !important;
+        /* Pull up ghost height created by scaling */
+
+        margin: 0 !important;
+        min-width: 0 !important;
+
+        /* Ensure it doesn't overlap parking */
+        flex-shrink: 0 !important;
+    }
+
+    /* --- FONT SIZE ADJUSTMENTS (Optimized for Mobile) --- */
+
+    .mini-code,
+    .zone-cabin-title {
+        font-size: 0.9rem !important;
+        /* Reduced from 1.1rem */
+        font-weight: 700 !important;
+        margin-bottom: 2px !important;
+    }
+
+    .small-label {
+        font-size: 0.7rem !important;
+        /* Reduced from 0.9rem */
+        font-weight: 700 !important;
+    }
+
+    .table-spot-circle {
+        font-size: 1.1rem !important;
+        font-weight: 800 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        /* Force full width box */
+        min-height: 60px !important;
+    }
+
+    .table-spot-circle .small-label {
+        font-size: 0.6rem !important;
+        margin-top: 2px;
+    }
+
+    .table-spot {
+        font-size: 1rem !important;
+        /* Reduced from 1.2rem */
+        font-weight: 800 !important;
+        padding: 2px !important;
+        /* Tight padding */
+    }
+
+    .table-spot .mini-code {
+        font-size: 0.85rem !important;
+        /* Further reduced for tables */
+    }
+
+    /* Fix Status Pills & Totals padding/size */
+    .mini-status {
+        font-size: 0.6rem !important;
+        padding: 1px 4px !important;
+        border-radius: 6px !important;
+        margin-top: 2px !important;
+        max-width: 95% !important;
+    }
+
+    .mini-total {
+        font-size: 0.7rem !important;
+        padding: 1px 4px !important;
+        margin-top: 2px !important;
+    }
+
+    .zone-icon {
+        font-size: 1.5rem !important;
+        margin-bottom: 2px !important;
+    }
+
+    /* Ensure right stack elements are visible */
+    .right-col-stack {
+        grid-column: 5 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    /* Adjust staff/counter height for mobile */
+    .zone-staff,
+    .zone-counter {
+        height: auto !important;
+        min-height: 90px !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* Shift Counter/Kitchen horizontally on mobile */
+    .bottom-right-stack {
+        transform: translateY(265px) translateX(50px) !important;
+    }
+
+    /* Shift Toilet right on mobile to align with Staff Room */
+    .zone-toilet {
+        transform: translateX(125px) !important;
+    }
+
+    /* --- FIXES FOR EXACT MATCH --- */
+
+    /* 1. Parking Position: Sibling of grid, so standard block flow */
+    .zone-parking {
+        position: relative !important;
+        top: 0px !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+
+        margin-top: 0px !important;
+        margin-left: 10px !important;
+        /* Left aligned below grid */
+
+        transform: scale(0.9) !important;
+        /* Reset strange scales */
+        transform-origin: left top !important;
+
+        display: flex !important;
+        align-items: center !important;
+        font-size: 1.2rem !important;
+        width: max-content !important;
+        /* Only as wide as needed */
+        min-width: 150px !important;
+        padding-right: 20px !important;
+    }
+
+    /* 2. Compact Middle Tables (1-4) */
+    .zone-tables-area {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 1fr 1fr !important;
+        gap: 5px !important;
+        padding: 5px !important;
+    }
+
+    /* Right Yellow Block Tables mobile size */
+    .zone-yellow-block-right .table-spot {
+        height: 180px !important;
+    }
+
+    /* 3. New Bottom Center Zone */
+    .zone-tables-bottom-center {
+        gap: 10px !important;
+        padding: 5px !important;
+    }
+
+    .zone-tables-bottom-center .table-spot {
+        min-height: 100px !important;
+    }
+
+    /* --- WAITER INDICATOR BADGES (Mobile) --- */
+    .d-label {
+        font-size: 0.55rem !important;
+        /* Smaller text */
+        padding: 2px 4px !important;
+        border-radius: 4px !important;
+    }
+
+    .d-left {
+        left: -14px !important;
+        /* Move closer to edge */
+        padding: 3px 6px !important;
+        font-size: 0.5rem !important;
+    }
+
+    .d-top {
+        top: -4px !important;
+        right: -2px !important;
+        font-size: 0.5rem !important;
+    }
+}

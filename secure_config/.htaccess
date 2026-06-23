@@ -1,0 +1,15 @@
+# SECURITY HEADER
+# Deny access to EVERYTHING in this folder and subfolders
+# This is a critical security folder holding credentials
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Deny from all
+</IfModule>
+
+# Disable directory listing explicitly
+Options -Indexes
